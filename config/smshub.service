@@ -1,0 +1,15 @@
+[Unit]
+Description=SMS Hub Service
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/sms-hub-linux
+Environment=FLASK_APP=app/main.py
+Environment=FLASK_ENV=production
+ExecStart=/path/to/sms-hub-linux/venv/bin/python -m flask run --host=0.0.0.0
+Restart=always
+
+[Install]
+WantedBy=multi-user.target 
